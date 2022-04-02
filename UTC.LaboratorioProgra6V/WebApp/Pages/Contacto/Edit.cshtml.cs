@@ -12,10 +12,12 @@ namespace WebApp.Pages.Contacto
     public class EditModel : PageModel
     {
         private readonly IContactoService contacto;
+        private readonly IProveedorService proveedor;
 
-        public EditModel(IContactoService contacto)
+        public EditModel(IContactoService contacto, IProveedorService proveedor)
         {
             this.contacto = contacto;
+            this.proveedor = proveedor;
         }
 
         [BindProperty(SupportsGet = true)] //para que no se filtre los ids en los url y evitar robo
@@ -23,7 +25,7 @@ namespace WebApp.Pages.Contacto
 
         [BindProperty] //protege todo
         public ContactoEntity Entity { get; set; } = new ContactoEntity(); //prop para guardar los datos de la entidad
-       
+        public IEnumerable<ProveedorEntity> Proveedor { get; set; } = new List<ProveedorEntity>();
         //metodo edit
         public async Task<IActionResult> OnGet()
         {
