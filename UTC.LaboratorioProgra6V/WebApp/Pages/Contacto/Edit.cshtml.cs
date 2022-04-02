@@ -46,7 +46,7 @@ namespace WebApp.Pages.Contacto
         }
 
         //metodo update insert
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult>OnPostAsync()
         {
             try
             {
