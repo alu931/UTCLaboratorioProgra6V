@@ -38,9 +38,9 @@ namespace WebApp.Pages.Contacto
                         IdContacto = id
                     });
 
-                    ProveedorLista = await proveedor.GETLISTA();
-
                 }
+
+                ProveedorLista = await proveedor.GETLISTA();
 
                 return Page();
             }
