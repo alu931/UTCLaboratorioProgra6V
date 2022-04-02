@@ -35,7 +35,7 @@ namespace WebApp.Pages.Contacto
                 {
                     Entity = await contacto.GETBYID(new()
                     {
-                        IdProveedor = id
+                        IdContacto = id
                     });
 
                     ProveedorLista = await proveedor.GETLISTA();
