@@ -25,7 +25,7 @@ namespace WebApp.Pages.Contacto
 
         [BindProperty] //protege todo
         public ContactoEntity Entity { get; set; } = new ContactoEntity(); //prop para guardar los datos de la entidad
-        public IEnumerable<ProveedorEntity> Proveedor { get; set; } = new List<ProveedorEntity>();
+        public IEnumerable<ProveedorEntity> ProveedorLista { get; set; } = new List<ProveedorEntity>();
         //metodo edit
         public async Task<IActionResult> OnGet()
         {
@@ -37,6 +37,9 @@ namespace WebApp.Pages.Contacto
                     {
                         IdProveedor = id
                     });
+
+                    ProveedorLista = await proveedor.GETLISTA();
+
                 }
 
                 return Page();
@@ -48,40 +51,35 @@ namespace WebApp.Pages.Contacto
         }
 
         //metodo update insert
-        public async Task<IActionResult>OnPostAsync()
+        public async Task<IActionResult>OnPost()
         {
             try
             {
+                var result = new DBEntity();
                 //update
                 if (Entity.IdContacto.HasValue) //si el idContacto tiene un valor (true) el metodo actuliza
                 {
-                    var result = await contacto.UPDATE(Entity);
+                     result = await contacto.UPDATE(Entity);
 
-                    if (result.CodeError != 0) throw new Exception(result.MsgError);
-                    TempData["Msg"] = "Se actualizo correctamente";
+               
 
                 }
                 else //Si el idContacto no tiene valor (false) el metodo inserta
                 {
-                    var result = await contacto.CREATE(Entity);
+                     result = await contacto.CREATE(Entity);
 
-                    if (result.CodeError != 0) throw new Exception(result.MsgError);
-                    TempData["Msg"] = "Se inserto correctamente";
+             
                 }
 
-                return RedirectToPage("Grid"); //hacer el grid
+                return new JsonResult(result); 
             }
             catch (Exception ex)
             {
-                return Content(ex.Message);
+                return new JsonResult(new DBEntity { CodeError= ex.HResult, MsgError= ex.Message });
             }
         }
 
 
 
-
-
-
-        //*****************
     }
 }

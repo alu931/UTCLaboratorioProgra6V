@@ -1,7 +1,7 @@
 ﻿
 namespace App.AxiosProvider   {
 
-    export const GuardarEmpleado = () => axios.get<DBEntity>("aplicacion").then(({data})=>data );
+    export const GuardarContacto = (entity) => axios.post<DBEntity>("Contacto/Edit", entity).then(({data})=>data );
 
 
 }

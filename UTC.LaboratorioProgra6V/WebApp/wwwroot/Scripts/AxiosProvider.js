@@ -3,7 +3,7 @@ var App;
 (function (App) {
     var AxiosProvider;
     (function (AxiosProvider) {
-        AxiosProvider.GuardarEmpleado = function () { return axios.get("aplicacion").then(function (_a) {
+        AxiosProvider.GuardarContacto = function (entity) { return axios.post("Contacto/Edit", entity).then(function (_a) {
             var data = _a.data;
             return data;
         }); };
