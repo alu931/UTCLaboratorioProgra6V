@@ -15,6 +15,8 @@ namespace WebApp
         {
             services.AddSingleton<IDataAccess, DataAccess>();
             services.AddScoped<IProveedorService, ProveedorService>();
+            services.AddScoped<IContactoService, ContactoService>();
+
 
             return services;
         }
