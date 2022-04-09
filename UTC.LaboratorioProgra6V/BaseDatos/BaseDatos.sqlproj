@@ -71,6 +71,7 @@
     <Build Include="dbo\StoreProcedures\ContactoActualizar.sql" />
     <Build Include="dbo\StoreProcedures\ContactoObtener.sql" />
     <Build Include="dbo\StoreProcedures\ProveedorLista.sql" />
+    <Build Include="dbo\StoreProcedures\ContactoEliminar.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BaseDatos.refactorlog" />
