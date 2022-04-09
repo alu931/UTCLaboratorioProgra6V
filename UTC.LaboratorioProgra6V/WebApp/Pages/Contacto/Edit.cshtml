@@ -42,7 +42,7 @@
                 <!-- boton -->
                 <div class="row">
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="button" @@click="Save" class="btn btn-primary">
                             @(Model.id.HasValue?"Actualizar":"Agregar") <!-- validacion por si es agregar o actualizar -->
                         </button>
                     </div>

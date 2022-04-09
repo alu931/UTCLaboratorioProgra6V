@@ -49,7 +49,7 @@ namespace WBL
         {
             try
             {
-                var result = sql.QueryFirstAsync<ContactoEntity>("dbo.ProveedorObtener", new { entity.IdProveedor });
+                var result = sql.QueryFirstAsync<ContactoEntity>("dbo.ContactoObtener", new { entity.IdContacto });
                 return await result;
             }
             catch (Exception)
@@ -66,8 +66,9 @@ namespace WBL
         {
             try
             {
-                var result = sql.ExecuteAsync("dbo.ProveedorInsertar", new
+                var result = sql.ExecuteAsync("dbo.ContactoInsertar", new
                 {
+                    entity.IdProveedor,
                     entity.Identificacion,
                     entity.Nombre,
                     entity.PrimerApellido,
@@ -93,6 +94,7 @@ namespace WBL
             {
                 var result = sql.ExecuteAsync("dbo.ContactoActualizar", new
                 {
+                    entity.IdContacto,
                     entity.IdProveedor,
                     entity.Identificacion,
                     entity.Nombre,
@@ -117,9 +119,9 @@ namespace WBL
         {
             try
             {
-                var result = sql.ExecuteAsync("dbo.ProveedorEliminar", new
+                var result = sql.ExecuteAsync("dbo.ContactoEliminar", new
                 {
-                    entity.IdProveedor
+                    entity.IdContacto
 
                 });
 

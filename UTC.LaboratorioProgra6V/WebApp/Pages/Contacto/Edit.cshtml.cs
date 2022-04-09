@@ -23,7 +23,8 @@ namespace WebApp.Pages.Contacto
         [BindProperty(SupportsGet = true)] //para que no se filtre los ids en los url y evitar robo
         public int? id { get; set; }  //el signo es par que el campo permita nulos en el caso que se vaya a hacer un insert
 
-        [BindProperty] //protege todo
+        [BindProperty] //
+        [FromBody]
         public ContactoEntity Entity { get; set; } = new ContactoEntity(); //prop para guardar los datos de la entidad
         public IEnumerable<ProveedorEntity> ProveedorLista { get; set; } = new List<ProveedorEntity>();
         //metodo edit
